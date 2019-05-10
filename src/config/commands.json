@@ -1,6 +1,7 @@
 {
     "commands_prefix": "!",
     "commands": [
-        "equipes"
+        "equipes",
+        "equipe"
     ]
 }

@@ -9,6 +9,7 @@ let sentMessage = new Discord.RichEmbed();
 client.login(config.token);
 
 client.on('ready', () => {
+    console.log("Ready");
     client.user.setActivity("DevLOL");
 });
 
@@ -17,9 +18,15 @@ client.on('message', (receivedMessage) => {
         return 0;
     }
 
+    const args = receivedMessage.content.slice(commands.commands_prefix.length).trim().split(/ +/g);
+    const command = args.shift().toLowerCase();
+
     if (receivedMessage.content.startsWith(commands.commands_prefix)) {
-        if(receivedMessage.content === commands.commands_prefix + commands.commands[0]){
+        if(command ===  commands.commands[0]){
            franchises.franchises(receivedMessage, sentMessage);
+        }
+        else if(command ===  commands.commands[1]){
+            franchises.franchise(receivedMessage,sentMessage,args);
         }
     }
 });
